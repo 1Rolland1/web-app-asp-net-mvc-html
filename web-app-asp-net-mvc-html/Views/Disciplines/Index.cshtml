@@ -1,0 +1,52 @@
+﻿@using web_app_asp_net_mvc_html.Models
+@using web_app_asp_net_mvc_html.Extensions
+@model List<Discipline>
+
+<h1><b>Дисциплины </b></h1>
+
+@Html.ActionLink("Добавить запись", "Create", "Disciplines")
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Дисциплина
+            </th>
+            <th>
+                Цели дисциплины
+            </th>
+            <th>
+                Задачи дисциплины
+            </th>
+            <th>
+                Разделы
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var discipline in Model)
+        {
+        <tr>
+            <td>
+                @discipline.Name
+            </td>
+            <td>
+                @discipline.DisciplineGoal
+            </td>
+            <td>
+                @discipline.DisciplineObjectives
+            </td>
+            <td>
+                <pre>@discipline.MainSections</pre>
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", "Disciplines", new { id = discipline.Id }, new { })
+                @Html.ActionLink("Изменить", "Edit", "Disciplines", new { id = discipline.Id }, new { })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

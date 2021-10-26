@@ -1,0 +1,34 @@
+﻿@using web_app_asp_net_mvc_html.Models
+@using web_app_asp_net_mvc_html.Extensions
+@model List<Nationality>
+
+<h1><b>Национальности</b></h1>
+
+@Html.ActionLink("Добавить запись", "Create", "Nationalitys")
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Национальность
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nationality in Model)
+        {
+        <tr>
+            <td>
+                @nationality.Name
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", "Nationalitys", new { id = nationality.Id }, new { })
+                @Html.ActionLink("Изменить", "Edit", "Nationalitys", new { id = nationality.Id }, new { })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
